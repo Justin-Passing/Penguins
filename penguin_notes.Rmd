@@ -1,0 +1,59 @@
+---
+title: "Penguin_notes"
+author: "Justin-Passing"
+date: "12/25/2021"
+output:
+html_document: default
+---
+
+```{r, include=FALSE}
+options(tinytex.verbose=TRUE)
+```
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Setting the environment for R Markdown
+
+This is an R Markdown document. Loading "tidyverse", "palmerpenguins" and "ggplot2" for starters
+
+```{r loading packages}
+library(tidyverse)
+library(palmerpenguins)
+library(ggplot2)
+```
+
+## Dataset Summary
+
+```{r penguins}
+summary(penguins)
+```
+
+## Visualizations
+Here we go through a series of visualizations
+
+## Flipper and body mass in purple
+```{r flipper and body mass in purple}
+
+ggplot(data=penguins,aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(color="purple")
+```
+
+## Flipper and body mass by species
+Here is a breakdown of body mass by species
+
+```{r species}
+ggplot(data=penguins,aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(shape=species))
+```
+
+## Flipper and body mass by sex
+Here is a breakdown of body mass by species and sex
+
+```{r}
+ggplot(data = penguins,aes(x=flipper_length_mm,y=body_mass_g))+
+  geom_point(aes(color=species,shape=species))+
+  facet_wrap(~sex)
+```
